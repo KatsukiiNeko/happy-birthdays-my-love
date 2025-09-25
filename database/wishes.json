@@ -1,0 +1,14 @@
+{
+    "name": "Sarah",
+    "title": "Happy Belated Birthday, Sarah! 💖",
+    "subtitle": "I know I'm late — but my love is always on time ⏰",
+    "message": "My dearest Sarah, I'm sorry this birthday surprise is coming a few days late, but I wanted to make something really special for you. Every day with you feels like a celebration, and your birthday deserves something as beautiful and unique as you are. I love how you light up every room you enter, just like the candles on this cake. Your laugh is my favorite sound, your smile is my favorite sight, and your happiness is my favorite mission. I hope this little interactive surprise makes you smile and reminds you how incredibly loved you are. You make every ordinary moment feel magical, and I can't wait to create a million more memories with you. Thank you for being the most amazing girlfriend, best friend, and partner in crime. Here's to another year of adventures, inside jokes, spontaneous dance parties in the kitchen, and all the little moments that make us 'us.' I love you more than words can express, more than all the stars in the sky, and more than all the birthday cakes in the world combined! 🎂✨",
+    "sender": "Your devoted boyfriend, Alex 💕",
+    "music": "assets/audio/happy-birthday-short.mp3",
+    "gallery": [
+        "assets/images/gallery-01.webp",
+        "assets/images/gallery-02.webp",
+        "assets/images/gallery-03.webp",
+        "assets/images/flying-photo.webp"
+    ]
+}

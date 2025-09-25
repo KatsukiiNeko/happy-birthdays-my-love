@@ -1,0 +1,116 @@
+/* Layout styles */
+
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-sm);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    padding: var(--spacing-lg) 0;
+}
+
+.cake-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.message-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-lg) 0;
+    animation: slideUp var(--transition-slow) ease-out;
+}
+
+.flying-photo-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-lg) 0;
+    animation: fadeIn var(--transition-slow) ease-out;
+}
+
+.gallery-section {
+    padding: var(--spacing-lg) 0;
+    animation: slideUp var(--transition-slow) ease-out;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+/* Desktop layout adjustments */
+@media (min-width: 768px) {
+    .main-container {
+        padding: var(--spacing-lg);
+        gap: var(--spacing-xl);
+    }
+    
+    .hero-section {
+        min-height: 60vh;
+    }
+    
+    .cake-container {
+        max-width: 500px;
+        height: 400px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--spacing-lg);
+    }
+}
+
+@media (min-width: 1024px) {
+    .main-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+            "hero message"
+            "photo photo"
+            "gallery gallery"
+            "controls controls";
+        gap: var(--spacing-xl);
+        align-items: start;
+    }
+    
+    .hero-section {
+        grid-area: hero;
+        min-height: auto;
+    }
+    
+    .message-section {
+        grid-area: message;
+        align-self: center;
+    }
+    
+    .flying-photo-section {
+        grid-area: photo;
+    }
+    
+    .gallery-section {
+        grid-area: gallery;
+    }
+    
+    .audio-controls {
+        grid-area: controls;
+        justify-self: center;
+    }
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Happy Birthday, Beautiful! 💖</title>
+    
+    <!-- Preload critical image -->
+    <link rel="preload" as="image" href="assets/images/flying-photo.webp">
+    
+    <!-- Preconnect to CDN -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    
+    <!-- Inline Preloader Script -->
+    <script>
+        // Initial loading state
+        document.documentElement.classList.add('loading');
+        
+        // Preload LQIP image
+        const lqipImg = new Image();
+        let lqipLoaded = false;
+        let domReady = false;
+        
+        lqipImg.onload = () => {
+            lqipLoaded = true;
+            checkReady();
+        };
+        
+        lqipImg.onerror = () => {
+            lqipLoaded = true; // Still proceed even if LQIP fails
+            checkReady();
+        };
+        
+        lqipImg.src = 'assets/images/flying-photo-lqip.jpg';
+        
+        // Check DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                domReady = true;
+                checkReady();
+            });
+        } else {
+            domReady = true;
+        }
+        
+        function checkReady() {
+            if (lqipLoaded && domReady) {
+                document.documentElement.classList.remove('loading');
+            }
+        }
+        
+        // Safety fallback
+        setTimeout(() => {
+            document.documentElement.classList.remove('loading');
+        }, 2500);
+    </script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen" aria-hidden="true">
+        <div class="loading-content">
+            <div class="loading-heart">💖</div>
+            <p>Preparing something special...</p>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Hero Section with Cake -->
+        <section class="hero-section" id="hero-section">
+            <div class="cake-container" id="cake-container">
+                <!-- Three.js canvas will be inserted here or fallback -->
+                <div class="fallback-cake" id="fallback-cake" style="display: none;">
+                    <img src="assets/images/cake-thumb.webp" alt="Birthday cake" class="cake-image">
+                    <button class="paper-button glowing" id="paper-button" aria-label="Open the paper tag">
+                        <span>📜</span>
+                    </button>
+                    <button class="candle-button hidden" id="candle-button" aria-label="Blow out the candle">
+                        <span class="flame">🕯️</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Message Card (Hidden Initially) -->
+        <section class="message-section hidden" id="message-section" aria-live="polite">
+            <div class="message-card">
+                <h1 id="birthday-title" class="birthday-title"></h1>
+                <p id="birthday-subtitle" class="birthday-subtitle"></p>
+                <div id="birthday-message" class="birthday-message"></div>
+                <p id="birthday-sender" class="birthday-sender"></p>
+                
+                <div class="blow-prompt hidden" id="blow-prompt">
+                    <p>Now make a wish and blow out the candle! 🕯️</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flying Photo Section (Hidden Initially) -->
+        <section class="flying-photo-section hidden" id="flying-photo-section">
+            <div class="flying-photo-container">
+                <img id="flying-photo-lqip" 
+                     src="assets/images/flying-photo-lqip.jpg" 
+                     alt="Special memory" 
+                     class="flying-photo lqip">
+                <img id="flying-photo-full" 
+                     src="assets/images/flying-photo.webp" 
+                     alt="Special memory" 
+                     class="flying-photo full hidden"
+                     loading="lazy">
+            </div>
+        </section>
+
+        <!-- Gallery Section (Hidden Initially) -->
+        <section class="gallery-section hidden" id="gallery-section" aria-hidden="true">
+            <h2 class="gallery-title">Our Beautiful Memories</h2>
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Gallery images will be populated by JS -->
+            </div>
+        </section>
+
+        <!-- Audio Controls (Hidden Initially) -->
+        <div class="audio-controls hidden" id="audio-controls">
+            <audio id="birthday-audio" 
+                   preload="none" 
+                   playsinline 
+                   webkit-playsinline 
+                   loop>
+                <source src="" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <button id="mute-button" class="control-button" aria-label="Mute audio">
+                <span class="unmuted">🔊</span>
+                <span class="muted hidden">🔇</span>
+            </button>
+        </div>
+
+        <!-- Confetti Container -->
+        <div class="confetti-container" id="confetti-container"></div>
+    </main>
+
+    <!-- JavaScript Modules -->
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
